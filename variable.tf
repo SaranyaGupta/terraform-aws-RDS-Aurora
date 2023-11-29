@@ -6,8 +6,8 @@ variable "create" {
 
 variable "name" {
   description = "Name used across resources created"
-  type        = string
-  default     = "test-RDS-Aurora"
+  type        = stringcluster_parameter_group_name
+  default     = "test-rds-aurora"
 }
 
 variable "tags" {
@@ -396,7 +396,7 @@ variable "monitoring_role_arn" {
 variable "iam_role_name" {
   description = "Friendly name of the monitoring role"
   type        = string
-  default     = "test-RDS-Aurora-IAM"
+  default     = "test-rds-aurora-IAM"
 }
 
 variable "iam_role_use_name_prefix" {
@@ -560,7 +560,7 @@ variable "create_db_cluster_parameter_group" {
 variable "db_cluster_parameter_group_name" {
   description = "The name of the DB cluster parameter group"
   type        = string
-  default     = "test-RDS-aurora-parameter-group"
+  default     = "test-rds-aurora-parameter-group"
 }
 
 variable "db_cluster_parameter_group_use_name_prefix" {
@@ -612,7 +612,7 @@ variable "db_parameter_group_description" {
 variable "db_parameter_group_family" {
   description = "The family of the DB parameter group"
   type        = string
-  default     = ""
+  default     = "auroramysql5.7"
 }
 
 variable "db_parameter_group_parameters" {
