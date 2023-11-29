@@ -298,7 +298,10 @@ variable "cluster_timeouts" {
 variable "instances" {
   description = "Map of cluster instances and any specific/overriding attributes to be created"
   type        = any
-  default     = {}
+  default     = {
+one = {}
+two = {}
+  }
 }
 
 variable "auto_minor_version_upgrade" {
