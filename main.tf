@@ -14,8 +14,8 @@ resource "random_string" "database_password" {
 locals {
   create = var.create
   port = var.port
-  db_subnet_group_name          = try(coalesce(var.db_subnet_group_name, var.name), "")
-  security_group_name           = try(coalesce(var.security_group_name, var.name), "")
+  db_subnet_group_name          = try(coalesce(var.db_subnet_group_name, var.name), null)
+  security_group_name           = try(coalesce(var.security_group_name, var.name), null)
   cluster_parameter_group_name  = try(coalesce(var.db_cluster_parameter_group_name, var.name), null)
   db_parameter_group_name       = try(coalesce(var.db_parameter_group_name, var.name), null)
   backtrack_window              = (var.engine == "aurora-mysql" || var.engine == "aurora")? var.backtrack_window : 0
