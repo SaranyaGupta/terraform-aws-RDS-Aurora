@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "us-east-2"
+}
+
 data "aws_partition" "current" {}
 
 data "aws_availability_zones" "available" {}
