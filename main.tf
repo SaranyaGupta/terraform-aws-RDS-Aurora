@@ -10,7 +10,7 @@ resource "random_string" "database_password" {
 locals {
   create = var.create
   port = var.port
-  db_subnet_group_name          = var.create_db_subnet_group ? try(aws_db_subnet_group.this[0].name, null) : 0
+  db_subnet_group_name          = try(coalesce(var.db_subnet_group_name, var.name), "")
   security_group_name           = try(coalesce(var.security_group_name, var.name), "")
   cluster_parameter_group_name  = try(coalesce(var.db_cluster_parameter_group_name, var.name), null)
   db_parameter_group_name       = try(coalesce(var.db_parameter_group_name, var.name), null)
