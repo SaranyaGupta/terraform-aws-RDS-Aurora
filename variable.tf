@@ -6,7 +6,7 @@ variable "create" {
 
 variable "name" {
   description = "Name used across resources created"
-  type        = stringcluster_parameter_group_name
+  type        = string
   default     = "test-rds-aurora"
 }
 
