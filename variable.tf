@@ -594,7 +594,7 @@ variable "db_cluster_parameter_group_parameters" {
 variable "create_db_parameter_group" {
   description = "Determines whether a DB parameter should be created or use existing"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "db_parameter_group_use_name_prefix" {
