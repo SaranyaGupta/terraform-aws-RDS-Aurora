@@ -13,6 +13,7 @@ locals {
 
 module "rds_cluster" {
   source = "./modules/aurora-mysql"
+  depends_on = [module.db_subnet_group.db_subnet_group_name]
   create                              = local.create
   name                                = var.name
   allocated_storage                   = var.allocated_storage
@@ -101,7 +102,6 @@ module "db_subnet_group" {
   tags                   = var.tags
 }
 module "cluster_parameter_group" {
-  depends_on = [module.db_subnet_group.db_subnet_group_name]
   source = "./modules/db_cluster_parameter_group"
   create = local.create
   create_db_cluster_parameter_group      = local.create_db_cluster_parameter_group
