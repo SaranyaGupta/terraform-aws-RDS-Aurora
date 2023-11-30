@@ -1,15 +1,13 @@
-output "db_parameter_group_id" {
-  description = "The db parameter group id"
-  value       = try(aws_db_parameter_group.parameter_group[*].id, null)
-}
-
-output "db_parameter_group_name" {
-  description = "The db parameter group name"
-  value       = try(aws_db_parameter_group.parameter_group[*].name, null)
-}
-
+################################################################################
+# DB Parameter Group
+################################################################################
 
 output "db_parameter_group_arn" {
-  description = "The ARN of the db parameter group"
-  value       = try(aws_db_parameter_group.parameter_group[*].arn, null)
+  description = "The ARN of the DB parameter group created"
+  value       = try(aws_db_parameter_group.this[0].arn, null)
+}
+
+output "db_parameter_group_id" {
+  description = "The ID of the DB parameter group created"
+  value       = try(aws_db_parameter_group.this[0].id, null)
 }
