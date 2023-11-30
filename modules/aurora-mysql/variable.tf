@@ -141,7 +141,7 @@ variable "database_name" {
 variable "db_cluster_instance_class" {
   description = "The compute and memory capacity of each DB instance in the Multi-AZ DB cluster, for example db.m6g.xlarge. Not all DB instance classes are available in all AWS Regions, or for all database engines"
   type        = string
-  default     = "db.m5.large"
+  default     = "db.r5.large"
 }
 
 variable "db_cluster_db_instance_parameter_group_name" {
