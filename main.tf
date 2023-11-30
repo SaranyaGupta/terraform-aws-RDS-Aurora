@@ -5,6 +5,7 @@ provider "aws" {
 locals {
   create_db_subnet_group    = var.create_db_subnet_group
   create_db_parameter_group = var.create_db_parameter_group
+  create_cloudwatch_log_group=var.create_cloudwatch_log_group
   create = var.create
   port = var.port
 }
@@ -50,7 +51,42 @@ module "rds_cluster" {
   source_region                       = var.source_region
   storage_encrypted                   = var.storage_encrypted
   storage_type                        = var.storage_type
-  tags                                = merge(var.tags, var.cluster_tags)
+  tags                                = var.tags
   #vpc_security_group_ids              = compact(concat([try(aws_security_group.this[0].id, "")], var.vpc_security_group_ids)) 
-
+  vpc_security_group_ids              = var.vpc_security_group_ids
+  cluster_timeouts ={
+    create = try(var.cluster_timeouts.create, null)
+    update = try(var.cluster_timeouts.update, null)
+    delete = try(var.cluster_timeouts.delete, null)
+  }
+  ca_cert_identifier                    = var.ca_cert_identifier
+  instances_use_identifier_prefix       = var.instances_use_identifier_prefix
+ create_monitoring_role                  = var.create_monitoring_role
+ monitoring_role_arn=var.monitoring_role_arn
+ instance_timeouts= {
+    create = try(var.instance_timeouts.create, null)
+    update = try(var.instance_timeouts.update, null)
+    delete = try(var.instance_timeouts.delete, null)
+  }
+  iam_roles=var.iam_roles 
+  iam_role_use_name_prefix=var.iam_role_use_name_prefix
+  iam_role_description=var.iam_role_description
+  iam_role_path=var.iam_role_path
+  iam_role_managed_policy_arns   = var.iam_role_managed_policy_arns
+  iam_role_permissions_boundary  = var.iam_role_permissions_boundary
+  iam_role_force_detach_policies = var.iam_role_force_detach_policies
+  iam_role_max_session_duration  = var.iam_role_max_session_duration
+  cluster_tags=var.cluster_tags
+  autoscaling_enabled=var.autoscaling_enabled
+  autoscaling_max_capacity       = var.autoscaling_max_capacity
+  autoscaling_min_capacity       = var.autoscaling_min_capacity
+  autoscaling_policy_name               = var.autoscaling_policy_name
+  autoscaling_scale_in_cooldown  = var.autoscaling_scale_in_cooldown
+  autoscaling_scale_out_cooldown  = var.autoscaling_scale_out_cooldown
+  predefined_metric_type=var.predefined_metric_type
+  autoscaling_target_cpu =var.autoscaling_target_cpu 
+  autoscaling_target_connections=var.autoscaling_target_connections
+  create_cloudwatch_log_group=local.create_cloudwatch_log_group
+  cloudwatch_log_group_retention_in_days = var.cloudwatch_log_group_retention_in_days
+  cloudwatch_log_group_kms_key_id       = var.cloudwatch_log_group_kms_key_id
 }
