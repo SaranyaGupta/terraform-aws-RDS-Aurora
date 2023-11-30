@@ -331,7 +331,7 @@ variable "instances_use_identifier_prefix" {
 variable "instance_class" {
   description = "Instance type to use at master instance. Note: if `autoscaling_enabled` is `true`, this will be the same instance class used on instances created by autoscaling"
   type        = string
-  default     = "db.m5.large"
+  default     = "db.r5.large"
 }
 
 variable "monitoring_interval" {
