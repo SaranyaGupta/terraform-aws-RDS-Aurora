@@ -603,7 +603,7 @@ variable "create_db_parameter_group" {
 variable "db_parameter_group_use_name_prefix" {
   description = "Determines whether the DB parameter group name is used as a prefix"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "db_parameter_group_description" {

@@ -8,8 +8,8 @@ locals {
 resource "aws_db_parameter_group" "this" {
   count = local.create && var.create_db_parameter_group ? 1 : 0
 
-  name        = var.db_parameter_group_use_name_prefix ? null : local.db_parameter_group_name
-  name_prefix = var.db_parameter_group_use_name_prefix ? "${local.db_parameter_group_name}-" : null
+  name        = local.db_parameter_group_name
+  name_prefix = var.db_parameter_group_use_name_prefix ? "${local.db_parameter_group_name}-" : ""
   description = var.db_parameter_group_description
   family      = var.db_parameter_group_family
 
