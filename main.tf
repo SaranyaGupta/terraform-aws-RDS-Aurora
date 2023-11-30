@@ -3,16 +3,17 @@ provider "aws" {
 }
 
 locals {
-  create_db_subnet_group    = var.create_db_subnet_group
-  create_db_parameter_group = var.create_db_parameter_group
-  create_cloudwatch_log_group=var.create_cloudwatch_log_group
-  create = var.create
-  port = var.port
+  create_db_subnet_group           = var.create_db_subnet_group
+  create_db_parameter_group        = var.create_db_parameter_group
+  create_cloudwatch_log_group      =var.create_cloudwatch_log_group
+  create_db_cluster_parameter_group=var.create_db_cluster_parameter_group
+  create                           = var.create
+  port                             = var.port
 }
 
 module "rds_cluster" {
   source = "./modules/aurora-mysql"
-  create                               = local.create
+  create                              = local.create
   name                                = var.name
   allocated_storage                   = var.allocated_storage
   allow_major_version_upgrade         = var.allow_major_version_upgrade
@@ -52,7 +53,7 @@ module "rds_cluster" {
   storage_encrypted                   = var.storage_encrypted
   storage_type                        = var.storage_type
   tags                                = var.tags
-  #vpc_security_group_ids              = compact(concat([try(aws_security_group.this[0].id, "")], var.vpc_security_group_ids)) 
+  #vpc_security_group_ids             = compact(concat([try(aws_security_group.this[0].id, "")], var.vpc_security_group_ids)) 
   vpc_security_group_ids              = var.vpc_security_group_ids
   cluster_timeouts ={
     create = try(var.cluster_timeouts.create, null)
@@ -61,8 +62,8 @@ module "rds_cluster" {
   }
   ca_cert_identifier                    = var.ca_cert_identifier
   instances_use_identifier_prefix       = var.instances_use_identifier_prefix
- create_monitoring_role                  = var.create_monitoring_role
- monitoring_role_arn=var.monitoring_role_arn
+  create_monitoring_role                = var.create_monitoring_role
+  monitoring_role_arn                   = var.monitoring_role_arn
  instance_timeouts= {
     create = try(var.instance_timeouts.create, null)
     update = try(var.instance_timeouts.update, null)
@@ -89,4 +90,26 @@ module "rds_cluster" {
   create_cloudwatch_log_group=local.create_cloudwatch_log_group
   cloudwatch_log_group_retention_in_days = var.cloudwatch_log_group_retention_in_days
   cloudwatch_log_group_kms_key_id       = var.cloudwatch_log_group_kms_key_id
+}
+module "cluster_parameter_group" {
+  source = "./modules/db_cluster_parameter_group"
+  create = local.create
+  create_db_cluster_parameter_group      = local.create_db_cluster_parameter_group
+  db_cluster_parameter_group_use_name_prefix = var.db_cluster_parameter_group_use_name_prefix
+  db_cluster_parameter_group_name        =var.db_cluster_parameter_group_name
+  db_cluster_parameter_group_description = var.db_cluster_parameter_group_description
+  db_cluster_parameter_group_family      = var.db_cluster_parameter_group_family
+  db_cluster_parameter_group_parameters= var.db_cluster_parameter_group_parameters
+  tags = var.tags
+}
+module "db_parameter_group" {
+  source = "./modules/db_parameter_group"
+  create = local.create
+  create_db_parameter_group      = local.create_db_parameter_group
+  db_parameter_group_use_name_prefix = var.db_parameter_group_use_name_prefix
+  db_parameter_group_name        =var.db_parameter_group_name
+  db_parameter_group_description = var.db_parameter_group_description
+  db_parameter_group_family      = var.db_parameter_group_family
+  db_parameter_group_parameters  = var.db_parameter_group_parameters
+  tags = var.tags
 }
