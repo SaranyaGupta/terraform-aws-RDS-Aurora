@@ -29,7 +29,7 @@ module "rds_cluster" {
   db_cluster_instance_class           = var.db_cluster_instance_class
   db_cluster_parameter_group_name     = "${module.cluster_parameter_group.db_cluster_parameter_group_name}"
   db_subnet_group_name                = "${module.db_subnet_group.db_subnet_group_name}"
-  db_parameter_group_name             = "${module.db_parameter_group.db_parameter_group_name}" 
+  db_cluster_db_instance_parameter_group_name  = "${module.db_parameter_group.db_parameter_group_name}" 
   deletion_protection                 = var.deletion_protection
   enable_global_write_forwarding      = var.enable_global_write_forwarding
   enabled_cloudwatch_logs_exports     = var.enabled_cloudwatch_logs_exports
