@@ -12,7 +12,7 @@ locals {
 
 module "rds_cluster" {
   source = "./modules/aurora-mysql"
-  count                               = local.create
+  create                               = local.create
   name                                = var.name
   allocated_storage                   = var.allocated_storage
   allow_major_version_upgrade         = var.allow_major_version_upgrade
