@@ -65,7 +65,6 @@ resource "aws_rds_cluster" "this" {
   storage_type                        = var.storage_type
   tags                                = merge(var.tags, var.cluster_tags)
   vpc_security_group_ids              = var.vpc_security_group_ids
-
   timeouts {
     create = try(var.cluster_timeouts.create, null)
     update = try(var.cluster_timeouts.update, null)

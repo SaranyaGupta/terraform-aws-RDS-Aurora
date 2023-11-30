@@ -11,3 +11,7 @@ output "db_parameter_group_id" {
   description = "The ID of the DB parameter group created"
   value       = try(aws_db_parameter_group.this[0].id, null)
 }
+output "db_parameter_group_name" {
+  description = "The db parameter group name"
+  value       = try(aws_db_parameter_group.this[*].name, null)
+}
