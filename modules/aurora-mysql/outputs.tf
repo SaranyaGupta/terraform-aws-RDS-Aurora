@@ -77,12 +77,12 @@ output "cluster_instances" {
 ################################################################################
 # Cluster Endpoint(s)
 ################################################################################
-
+/*
 output "additional_cluster_endpoints" {
   description = "A map of additional cluster endpoints and their attributes"
   value       = aws_rds_cluster_endpoint.this
 }
-
+*/
 ################################################################################
 # Cluster IAM Roles
 ################################################################################
