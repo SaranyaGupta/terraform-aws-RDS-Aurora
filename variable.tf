@@ -319,7 +319,7 @@ variable "ca_cert_identifier" {
 variable "db_parameter_group_name" {
   description = "The name of the DB parameter group"
   type        = string
-  default     = null
+  default     = "test-db-parameter-group"
 }
 
 variable "instances_use_identifier_prefix" {
