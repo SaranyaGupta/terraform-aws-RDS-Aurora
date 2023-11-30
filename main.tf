@@ -92,12 +92,13 @@ module "rds_cluster" {
   cloudwatch_log_group_kms_key_id       = var.cloudwatch_log_group_kms_key_id
 }
 module "db_subnet_group" {
-  source = "./modules/db_subnet_group"
-  create = local.create
-  db_subnet_group_name= var.db_subnet_group_name
-  name = var.name
-  subnets  = var.subnets
-  tags        = var.tags
+  source                 = "./modules/db_subnet_group"
+  create                 = local.create
+  create_db_subnet_group =var.create_db_subnet_group
+  db_subnet_group_name   = var.db_subnet_group_name
+  name                   = var.name
+  subnets                = var.subnets
+  tags                   = var.tags
 }
 module "cluster_parameter_group" {
   source = "./modules/db_cluster_parameter_group"
