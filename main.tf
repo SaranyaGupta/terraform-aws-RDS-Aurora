@@ -91,6 +91,14 @@ module "rds_cluster" {
   cloudwatch_log_group_retention_in_days = var.cloudwatch_log_group_retention_in_days
   cloudwatch_log_group_kms_key_id       = var.cloudwatch_log_group_kms_key_id
 }
+module "db_subnet_group" {
+  source = "./modules/db_subnet_group"
+  create = local.create
+  db_subnet_group_name= var.db_subnet_group_name
+  name = var.name
+  subnets  = var.subnets
+  tags        = var.tags
+}
 module "cluster_parameter_group" {
   source = "./modules/db_cluster_parameter_group"
   create = local.create
