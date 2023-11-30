@@ -581,7 +581,7 @@ variable "db_cluster_parameter_group_description" {
 variable "db_cluster_parameter_group_family" {
   description = "The family of the DB cluster parameter group"
   type        = string
-  default     = "auroramysql5.7"
+  default     = "aurora-mysql5.7"
 }
 
 variable "db_cluster_parameter_group_parameters" {
