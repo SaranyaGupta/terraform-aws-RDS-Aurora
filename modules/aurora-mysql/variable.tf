@@ -189,7 +189,7 @@ variable "engine_mode" {
 variable "engine_version" {
   description = "The database engine version. Updating this argument results in an outage"
   type        = string
-  default     = "5.7"
+  default     = "8.0"
 }
 
 variable "final_snapshot_identifier" {

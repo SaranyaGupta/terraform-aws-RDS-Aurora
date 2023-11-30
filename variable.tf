@@ -162,7 +162,7 @@ variable "engine_mode" {
 variable "engine_version" {
   description = "The database engine version. Updating this argument results in an outage"
   type        = string
-  default     = "5.7"
+  default     = "8.0"
 }
 
 variable "final_snapshot_identifier" {
@@ -581,7 +581,7 @@ variable "db_cluster_parameter_group_description" {
 variable "db_cluster_parameter_group_family" {
   description = "The family of the DB cluster parameter group"
   type        = string
-  default     = "aurora-mysql5.7"
+  default     = "aurora-mysql8.0"
 }
 
 variable "db_cluster_parameter_group_parameters" {
