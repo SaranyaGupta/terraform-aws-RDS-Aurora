@@ -27,9 +27,9 @@ module "rds_cluster" {
   copy_tags_to_snapshot               = var.copy_tags_to_snapshot
   database_name                       = var.is_primary_cluster ? var.database_name : null
   db_cluster_instance_class           = var.db_cluster_instance_class
-  db_cluster_parameter_group_name     = "${module.cluster_parameter_group.db_cluster_parameter_group_name[0]}"
-  db_subnet_group_name                = "${module.db_subnet_group.db_subnet_group_name[0]}"
-  db_parameter_group_name             = "${module.db_parameter_group.db_parameter_group_name[0]}" 
+  db_cluster_parameter_group_name     = "${module.cluster_parameter_group.db_cluster_parameter_group_name}"
+  db_subnet_group_name                = "${module.db_subnet_group.db_subnet_group_name}"
+  db_parameter_group_name             = "${module.db_parameter_group.db_parameter_group_name}" 
   deletion_protection                 = var.deletion_protection
   enable_global_write_forwarding      = var.enable_global_write_forwarding
   enabled_cloudwatch_logs_exports     = var.enabled_cloudwatch_logs_exports
