@@ -117,8 +117,8 @@ variable "db_cluster_instance_class" {
   default     = "db.t3.small"
 }
 
-variable "db_cluster_db_instance_parameter_group_name" {
-  description = "Instance parameter group to associate with all instances of the DB cluster. The `db_cluster_db_instance_parameter_group_name` is only valid in combination with `allow_major_version_upgrade`"
+variable "db_instance_parameter_group_name" {
+  description = "Instance parameter group to associate with all instances of the DB cluster. The `db_instance_parameter_group_name` is only valid in combination with `allow_major_version_upgrade`"
   type        = string
   default     = null
 }
