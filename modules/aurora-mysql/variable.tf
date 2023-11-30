@@ -87,7 +87,7 @@ variable "cluster_use_name_prefix" {
 variable "allocated_storage" {
   description = "The amount of storage in gibibytes (GiB) to allocate to each DB instance in the Multi-AZ DB cluster. (This setting is required to create a Multi-AZ DB cluster)"
   type        = number
-  default     = 5
+  default     = 2
 }
 
 variable "allow_major_version_upgrade" {
@@ -141,7 +141,7 @@ variable "database_name" {
 variable "db_cluster_instance_class" {
   description = "The compute and memory capacity of each DB instance in the Multi-AZ DB cluster, for example db.m6g.xlarge. Not all DB instance classes are available in all AWS Regions, or for all database engines"
   type        = string
-  default     = "db.r5.large"
+  default     = "db.t3.small"
 }
 
 variable "db_cluster_db_instance_parameter_group_name" {
