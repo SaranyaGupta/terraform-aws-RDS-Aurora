@@ -106,6 +106,13 @@ resource "aws_rds_cluster_instance" "this" {
   promotion_tier                        = try(each.value.promotion_tier, null)
   publicly_accessible                   = try(each.value.publicly_accessible, var.publicly_accessible)
   tags                                  = merge(var.tags, try(each.value.tags, {}))
+  dynamic "blue_green_update" {
+    for_each = length(var.blue_green_update) > 0 ? [var.blue_green_update] : []
+
+    content {
+      enabled = try(blue_green_update.value.enabled, null)
+    }
+  }
 
   timeouts {
     create = try(var.instance_timeouts.create, null)
