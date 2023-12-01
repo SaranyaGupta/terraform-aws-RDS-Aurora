@@ -369,16 +369,7 @@ variable "instance_timeouts" {
   type        = map(string)
   default     = {}
 }
-variable "blue_green_update" {
-  description = "Enables low-downtime updates using RDS Blue/Green deployments."
-  type        = map(string)
-  default     = {
-deployment_identifier="blue_green_deployment",
-engine_version= "8.0.mysql_aurora.3.03.1",
-db_cluster_parameter_group="test-rds-aurora-parameter-group",
-db_instance_parameter_group=""
-  }
-}
+
 ################################################################################
 # Cluster IAM Roles
 ################################################################################

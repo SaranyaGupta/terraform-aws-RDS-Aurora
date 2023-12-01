@@ -1,8 +1,3 @@
-variable "blue_green_update" {
-  description = "Enables low-downtime updates using RDS Blue/Green deployments."
-  type        = map(string)
-  default     = {}
-}
 variable "create_db_parameter_group" {
   description = "Determines whether a DB parameter should be created or use existing"
   type        = bool
