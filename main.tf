@@ -26,6 +26,7 @@ module "rds_cluster" {
   cluster_members                     = var.cluster_members
   copy_tags_to_snapshot               = var.copy_tags_to_snapshot
   database_name                       = var.is_primary_cluster ? var.database_name : null
+  instance_class                      = var.instance_class
   db_cluster_instance_class           = var.db_cluster_instance_class
   db_cluster_parameter_group_name     = "${module.cluster_parameter_group.db_cluster_parameter_group_name}"
   db_subnet_group_name                = "${module.db_subnet_group.db_subnet_group_name}"
