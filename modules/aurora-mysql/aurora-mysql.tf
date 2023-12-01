@@ -1,6 +1,8 @@
 data "aws_partition" "current" {}
 
-data "aws_availability_zones" "available" {}
+data "aws_availability_zones" "available" {
+  state = "available"
+}
 
 resource "random_string" "database_password" {
   length  = 16
@@ -27,7 +29,7 @@ resource "aws_rds_cluster" "this" {
   allocated_storage                   = var.allocated_storage
   allow_major_version_upgrade         = var.allow_major_version_upgrade
   apply_immediately                   = var.apply_immediately
-  availability_zones                  = data.aws_availability_zones.available.zone_ids
+  availability_zones                  = data.aws_availability_zones.available.names
   backup_retention_period             = var.backup_retention_period
   backtrack_window                    = local.backtrack_window
   cluster_identifier                  = var.cluster_use_name_prefix ? null : var.name

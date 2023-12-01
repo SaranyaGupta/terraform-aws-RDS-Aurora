@@ -19,7 +19,7 @@ module "rds_cluster" {
   allocated_storage                   = var.allocated_storage
   allow_major_version_upgrade         = var.allow_major_version_upgrade
   apply_immediately                   = var.apply_immediately
-  availability_zones                  = var.availability_zones
+  #availability_zones                  = var.availability_zones
   backup_retention_period             = var.backup_retention_period
   backtrack_window                    = var.backtrack_window
   cluster_use_name_prefix             = var.cluster_use_name_prefix
