@@ -16,7 +16,7 @@ module "rds_cluster" {
   depends_on = [module.db_subnet_group.db_subnet_group_name]
   create                              = local.create
   name                                = var.name
-  allocated_storage                   = var.allocated_storage
+  #allocated_storage                   = var.allocated_storage
   allow_major_version_upgrade         = var.allow_major_version_upgrade
   apply_immediately                   = var.apply_immediately
   #availability_zones                  = var.availability_zones

@@ -26,7 +26,7 @@ locals {
 resource "aws_rds_cluster" "this" {
   count = local.create ? 1 : 0
 
-  allocated_storage                   = var.allocated_storage
+  #allocated_storage                   = var.allocated_storage
   allow_major_version_upgrade         = var.allow_major_version_upgrade
   apply_immediately                   = var.apply_immediately
   availability_zones                  = data.aws_availability_zones.available.names
