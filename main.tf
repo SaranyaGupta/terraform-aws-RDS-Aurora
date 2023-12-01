@@ -9,6 +9,10 @@ locals {
   create_db_cluster_parameter_group=var.create_db_cluster_parameter_group
   create                           = var.create
   port                             = var.port
+  create_high_cpu_alarm            =var.create_high_cpu_alarm
+  create_storage_space_too_low_alarm= var.create_storage_space_too_low_alarm
+  create_memory_too_low_alarm       = var.create_memory_too_low_alarm
+
 }
 
 module "rds_cluster" {
@@ -124,4 +128,19 @@ module "db_parameter_group" {
   db_parameter_group_family      = var.db_parameter_group_family
   db_parameter_group_parameters  = var.db_parameter_group_parameters
   tags = var.tags
+}
+module "cloudwatch_alarm" {
+  source =  "./modules/cloudwatch_alarm"
+  create_high_cpu_alarm = local.create_high_cpu_alarm
+  create_storage_space_too_low_alarm = local.create_storage_space_too_low_alarm
+  create_memory_too_low_alarm = local.create_memory_too_low_alarm
+  period           = var.period
+  statistic_period = var.statistic
+  Memory_threshold = var.Memory_threshold
+  CPU_threshold  =  var.CPU_threshold
+  storage_threshold = var.storage_threshold
+  actions_alarm = var.actions_alarm
+  actions_ok = var.ok_alarm
+  db_instance_id = "${module.rds_cluster.cluster_id}"
+  db_instance_class = var.instance_class
 }

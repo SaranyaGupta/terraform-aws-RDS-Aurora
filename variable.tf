@@ -646,3 +646,59 @@ variable "cloudwatch_log_group_kms_key_id" {
   type        = string
   default     = null
 }
+
+################################################################################
+# CloudWatch Alarms
+################################################################################
+variable "CPU_threshold" {
+  type        = number
+  default     = 80
+  description = "The value against which the specified statistic is compared."
+}
+variable "Memory_threshold" {
+  type        = number
+  default     = 4000
+  description = "The value against which the specified statistic is compared."
+}
+variable "storage_threshold" {
+  type        = number
+  default     = 20480
+  description = "The value against which the specified statistic is compared."
+}
+variable "statistic" {
+  type        = string
+  default     = "Average"
+  description = "statistic period."
+}
+variable "period" {
+  type        = number
+  default     = 300
+  description = "The period in seconds over which the specified statistic is applied."
+}
+variable "create_high_cpu_alarm" {
+  type        = bool
+  default     = true
+  description = "Whether or not to create the high cpu alarm.  Default is to create it (for backwards compatible support)"
+}
+variable "create_memory_too_low_alarm" {
+  type        = bool
+  default     = true
+  description = "Whether or not to create the memory_too_low_alarm.  Default is to create it (for backwards compatible support)"
+}
+variable "create_storage_space_too_low_alarm" {
+  type        = bool
+  default     = true
+  description = "Whether or not to create the storage_space_too_low_alarm  Default is to create it (for backwards compatible support)"
+}
+
+variable "actions_alarm" {
+  type        = list
+  default     = ["arn:aws:sns:us-east-2:215691912540:RDSAlarm"]
+  description = "A list of actions to take when alarms are triggered. Will likely be an SNS topic for event distribution."
+}
+
+variable "ok_alarm" {
+  type        = list
+  default     = ["arn:aws:sns:us-east-2:215691912540:RDSAlarm"]
+  description = "A list of actions to take when alarms are cleared. Will likely be an SNS topic for event distribution."
+}

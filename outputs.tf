@@ -1,6 +1,4 @@
-################################################################################
-# DB Subnet Group
-################################################################################
+
 
 output "db_subnet_group_name" {
   description = "The db subnet group name"
@@ -13,4 +11,8 @@ output "db_cluster_parameter_group_name" {
 output "db_parameter_group_name" {
   description = "The db parameter group name"
   value       = module.db_parameter_group.db_parameter_group_name
+}
+output "cluster_id" {
+  description = "The RDS Cluster Identifier"
+  value       = module.rds_cluster.cluster_id
 }
