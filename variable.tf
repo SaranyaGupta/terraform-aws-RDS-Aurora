@@ -162,8 +162,7 @@ variable "engine_mode" {
 variable "engine_version" {
   description = "The database engine version. Updating this argument results in an outage"
   type        = string
-  default     = "8.0"
-  #8.0.mysql_aurora.3.03.1
+  default     = "8.0.mysql_aurora.3.03.1"
 }
 
 variable "final_snapshot_identifier" {

@@ -37,7 +37,7 @@ resource "aws_rds_cluster" "this" {
   cluster_members                     = var.cluster_members
   copy_tags_to_snapshot               = var.copy_tags_to_snapshot
   database_name                       = var.is_primary_cluster ? var.database_name : null
-  db_cluster_instance_class           = var.db_cluster_instance_class
+  #db_cluster_instance_class           = var.db_cluster_instance_class
   db_cluster_parameter_group_name     = var.db_cluster_parameter_group_name
   db_instance_parameter_group_name    = var.allow_major_version_upgrade ? var.db_instance_parameter_group_name : null
   db_subnet_group_name                = local.db_subnet_group_name
