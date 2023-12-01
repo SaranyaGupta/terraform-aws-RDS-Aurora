@@ -141,7 +141,7 @@ variable "database_name" {
 variable "db_cluster_instance_class" {
   description = "The compute and memory capacity of each DB instance in the Multi-AZ DB cluster, for example db.m6g.xlarge. Not all DB instance classes are available in all AWS Regions, or for all database engines"
   type        = string
-  default     = "db.r4.large"
+  default     = null
 }
 
 variable "db_instance_parameter_group_name" {
@@ -189,7 +189,7 @@ variable "engine_mode" {
 variable "engine_version" {
   description = "The database engine version. Updating this argument results in an outage"
   type        = string
-  default     = "8.0"
+  default     = null
 }
 
 variable "final_snapshot_identifier" {
@@ -358,7 +358,7 @@ variable "instances_use_identifier_prefix" {
 variable "instance_class" {
   description = "Instance type to use at master instance. Note: if `autoscaling_enabled` is `true`, this will be the same instance class used on instances created by autoscaling"
   type        = string
-  default     = "db.m5.large"
+  default     = null
 }
 
 variable "monitoring_interval" {
