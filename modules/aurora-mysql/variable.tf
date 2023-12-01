@@ -135,7 +135,7 @@ variable "copy_tags_to_snapshot" {
 variable "database_name" {
   description = "Name for an automatically created database on cluster creation"
   type        = string
-  default     = "test-rds-aurora-db"
+  default     = null
 }
 
 variable "db_cluster_instance_class" {
