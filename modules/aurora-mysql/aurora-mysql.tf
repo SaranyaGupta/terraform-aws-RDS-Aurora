@@ -55,7 +55,8 @@ resource "aws_rds_cluster" "this" {
   iops                         		  = var.iops
   kms_key_id                   		  = var.kms_key_id
   #master_password                     = var.is_primary_cluster ? random_string.database_password.result : null
-  master_password                     =var.manage_master_user_password
+  master_password                     = var.manage_master_user_password ? null : random_string.database_password.result
+  manage_master_user_password         = var.manage_master_user_password
   master_user_secret_kms_key_id       = var.master_user_secret_kms_key_id
   master_username                     = var.is_primary_cluster ? var.master_username : null
   network_type                        = var.network_type
