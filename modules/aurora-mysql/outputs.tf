@@ -73,6 +73,10 @@ output "cluster_instances" {
   description = "A map of cluster instances and their attributes"
   value       = aws_rds_cluster_instance.this
 }
+output "instance_id" {
+  description = "instances id"
+  value       = aws_rds_cluster_instance.this.id
+}
 
 ################################################################################
 # Cluster Endpoint(s)

@@ -60,6 +60,8 @@ module "rds_cluster" {
   storage_encrypted                   = var.storage_encrypted
   storage_type                        = var.storage_type
   tags                                = var.tags
+  manage_master_user_password         =var.manage_master_user_password
+  master_user_secret_kms_key_id       = var.master_user_secret_kms_key_id
   #vpc_security_group_ids             = compact(concat([try(aws_security_group.this[0].id, "")], var.vpc_security_group_ids)) 
   vpc_security_group_ids              = var.vpc_security_group_ids
   cluster_timeouts ={
@@ -141,6 +143,6 @@ module "cloudwatch_alarm" {
   storage_threshold = var.storage_threshold
   actions_alarm = var.actions_alarm
   actions_ok = var.ok_alarm
-  db_instance_id = "${module.rds_cluster.cluster_id}"
+  db_instance_id = "${module.rds_cluster.instance_id}"
   db_instance_class = var.instance_class
 }

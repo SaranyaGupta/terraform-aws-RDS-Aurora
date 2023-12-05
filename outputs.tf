@@ -16,3 +16,7 @@ output "cluster_id" {
   description = "The RDS Cluster Identifier"
   value       = module.rds_cluster.cluster_id
 }
+output "instance_id" {
+  description = "instances id"
+  value       = module.rds_cluster.instance_id
+}

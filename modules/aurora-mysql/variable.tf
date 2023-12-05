@@ -470,7 +470,19 @@ variable "iam_role_max_session_duration" {
   type        = number
   default     = null
 }
-
+variable "manage_master_user_password" {
+  description = "Set to true to allow RDS to manage the master user password in Secrets Manager. Cannot be set if password is provided"
+  type        = bool
+  default     = true
+}
+variable "master_user_secret_kms_key_id" {
+  description = <<EOF
+  The key ARN, key ID, alias ARN or alias name for the KMS key to encrypt the master user password secret in Secrets Manager.
+  If not specified, the default KMS key for your Amazon Web Services account is used.
+  EOF
+  type        = string
+  default     = null
+}
 ################################################################################
 # Autoscaling
 ################################################################################
