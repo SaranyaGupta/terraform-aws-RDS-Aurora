@@ -273,7 +273,7 @@ variable "serverlessv2_scaling_configuration" {
 variable "skip_final_snapshot" {
   description = "Determines whether a final snapshot is created before the cluster is deleted. If true is specified, no snapshot is created"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "snapshot_identifier" {
