@@ -12,7 +12,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_utilization_too_high" {
   alarm_actions       = var.actions_alarm
   ok_actions          = var.actions_ok
   dimensions = {
-    DBInstanceIdentifier = var.db_instance_id
+    DBInstanceIdentifier = [var.db_instance_id]
   }
 }
 
@@ -31,7 +31,7 @@ resource "aws_cloudwatch_metric_alarm" "memory_too_low" {
   alarm_actions       = var.actions_alarm
   ok_actions          = var.actions_ok
   dimensions = {
-    DBInstanceIdentifier = var.db_instance_id
+    DBInstanceIdentifier = [var.db_instance_id]
   }
 }
 
@@ -49,6 +49,6 @@ resource "aws_cloudwatch_metric_alarm" "storage_space_too_low" {
   alarm_actions       = var.actions_alarm
   ok_actions          = var.actions_ok
   dimensions = {
-    DBInstanceIdentifier = var.db_instance_id
+    DBInstanceIdentifier = [var.db_instance_id]
   }
 }
