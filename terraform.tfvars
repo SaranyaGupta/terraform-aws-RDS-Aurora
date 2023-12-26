@@ -34,7 +34,8 @@ autoscaling_scale_in_cooldown=300
 autoscaling_scale_out_cooldown=300
 autoscaling_target_cpu=70
 autoscaling_target_connections=700
-create_security_group="sg1"
+create_security_group=true
+security_group_name="rds-sg5-aurora"
 vpc_id="vpc-0419802ed12eec58a"
 security_group_rules={
     "ingress" = { type = "ingress", from_port = 443, to_port = 443, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"], description = "For SSH" }
