@@ -75,7 +75,11 @@ output "cluster_instances" {
 }
 output "instance_id" {
   description = "instances id"
-  value       = aws_rds_cluster_instance.this["one"].id
+  #value       = aws_rds_cluster_instance.this["one"].id
+  value = {
+    for instance in keys(var.instances):
+      instance => aws_rds_cluster_instance.this[instance].id
+  }
 }
 
 ################################################################################
