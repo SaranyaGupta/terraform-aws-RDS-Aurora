@@ -126,6 +126,6 @@ module "cloudwatch_alarm" {
   storage_threshold = var.storage_threshold
   actions_alarm = var.actions_alarm
   actions_ok = var.ok_alarm
-  db_instance_id = "${module.rds_cluster.instance_id]}"
+  db_instance_id = "${module.rds_cluster.instance_id}"
   db_instance_class = var.instance_class
 }
