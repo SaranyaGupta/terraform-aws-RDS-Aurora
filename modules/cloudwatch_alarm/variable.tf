@@ -1,5 +1,5 @@
 variable "db_instance_id" {
-  type        = list
+  type        = string
   description = "RDS Instance ID"
 }
 
