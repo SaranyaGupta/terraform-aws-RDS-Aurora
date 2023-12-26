@@ -1,5 +1,5 @@
 create = true
-name   ="test-rds-aurora"
+name   ="rds-aurora-mysql-test"
 tags   = {
       ServerRoleType             = "Application"
       ServiceCriticality         = "High"
@@ -24,7 +24,8 @@ cluster_tags={}
 vpc_security_group_ids=["sg-0c5426001fd0fb679"]
 db_parameter_group_name="test-db-parameter-group"
 instance_class="db.r6g.large"
-iam_role_name="test-rds-aurora-IAM"
+monitoring_role_arn="arn:aws:iam::215691912540:role/rds-monitoring-role"
+iam_role_name="rds-aurora-monitoring-role"
 autoscaling_max_capacity=2
 autoscaling_min_capacity=0
 autoscaling_policy_name="target-metric"
