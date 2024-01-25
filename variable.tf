@@ -3,7 +3,10 @@ variable "create" {
   type        = bool
   default     = true
 }
-
+variable "alarm_name" {
+  type        = string
+  description = "Alarm Name Prefix"
+}
 variable "name" {
   description = "Name used across resources created"
   type        = string
