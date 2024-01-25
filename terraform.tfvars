@@ -52,12 +52,12 @@ autoscaling_target_connections                    =700
 security_group_name                               ="rds-sg5-aurora"
 security_group_description                        ="test security group for test RDS Aurora instance"
 vpc_id                                            ="vpc-0419802ed12eec58a"
-security_group_rules={
-    "ingress" = { type = "ingress", from_port = 443, to_port = 443, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"], description = "For SSH" }
-  }
+security_group_rules={}
 security_rules={
-    "ingress" = { type = "ingress", from_port = 443, to_port = 443, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"], description = "For SSH" }
+    rds-sg5-aurora = {
+    "rule1" = { type = "ingress", from_port = 22, to_port = 22, protocol = "tcp" , cidr_blocks = ["0.0.0.0/0"], description = "For SSH"}
   }
+}
 existing_sg_rules = {}
 ##CLUSTER PARAMETER GROUP NAME format --> <rds-cluster-pg>_<App_Name>_<rds engine>_<Environment>_<Version>_<Numeric>##
 db_cluster_parameter_group_name                   ="rds-cluster-pg-aurora-mysql-test"
