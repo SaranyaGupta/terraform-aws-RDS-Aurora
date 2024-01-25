@@ -116,6 +116,7 @@ module "db_parameter_group" {
 }
 module "cloudwatch_alarm" {
   source =  "./modules/cloudwatch_alarm"
+  alarm_name = var.alarm_name
   create_high_cpu_alarm = local.create_high_cpu_alarm
   create_storage_space_too_low_alarm = local.create_storage_space_too_low_alarm
   create_memory_too_low_alarm = local.create_memory_too_low_alarm
