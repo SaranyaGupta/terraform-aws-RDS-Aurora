@@ -55,6 +55,10 @@ vpc_id                                            ="vpc-0419802ed12eec58a"
 security_group_rules={
     "ingress" = { type = "ingress", from_port = 443, to_port = 443, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"], description = "For SSH" }
   }
+security_rules={
+    "ingress" = { type = "ingress", from_port = 443, to_port = 443, protocol = "tcp", cidr_blocks = ["0.0.0.0/0"], description = "For SSH" }
+  }
+existing_sg_rules = {}
 ##CLUSTER PARAMETER GROUP NAME format --> <rds-cluster-pg>_<App_Name>_<rds engine>_<Environment>_<Version>_<Numeric>##
 db_cluster_parameter_group_name                   ="rds-cluster-pg-aurora-mysql-test"
 db_cluster_parameter_group_description            = "test RDS aurora parameter group name"
