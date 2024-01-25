@@ -45,8 +45,8 @@ module "rds_cluster" {
   tags                                = var.tags
   manage_master_user_password         =var.manage_master_user_password
   master_user_secret_kms_key_id       = var.master_user_secret_kms_key_id
-  #vpc_security_group_ids             = compact(concat([try(aws_security_group.this[0].id, "")], var.vpc_security_group_ids)) 
-  vpc_security_group_ids              = var.vpc_security_group_ids
+  vpc_security_group_ids              =concat(module.new_security_group.id[*],var.vpc_security_group_ids)
+  #vpc_security_group_ids              = var.vpc_security_group_ids
   cluster_timeouts ={
     create = try(var.cluster_timeouts.create, null)
     update = try(var.cluster_timeouts.update, null)
@@ -113,6 +113,15 @@ module "db_parameter_group" {
   db_parameter_group_family      = var.db_parameter_group_family
   db_parameter_group_parameters  = var.db_parameter_group_parameters
   tags = var.tags
+}
+module "new_security_group" {
+  source = "./modules/security_group"
+  security_rules = var.security_rules  
+  vpc_id = var.vpc_id
+}
+module "existing_sg_rules" {
+  source = "./modules/existing_sg_rules"
+  existing_sg_rules = var.existing_sg_rules
 }
 module "cloudwatch_alarm" {
   source =  "./modules/cloudwatch_alarm"
