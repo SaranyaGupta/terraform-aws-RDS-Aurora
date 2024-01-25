@@ -1,3 +1,25 @@
+variable "security_rules" {
+
+      type = map(map(object({
+        type        = string
+        description = string
+        from_port   = number
+        to_port     = number
+        protocol    = string
+        cidr_blocks = list(string)
+      })))
+    }
+variable "existing_sg_rules" {
+
+      type = map(map(object({
+        type        = string
+        description = string
+        from_port   = number
+        to_port     = number
+        protocol    = string
+        cidr_blocks = list(string)
+      })))
+    }
 variable "create" {
   description = "Whether cluster should be created (affects nearly all resources)"
   type        = bool
