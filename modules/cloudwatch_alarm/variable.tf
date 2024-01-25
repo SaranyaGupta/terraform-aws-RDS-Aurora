@@ -3,9 +3,8 @@ variable "db_instance_id" {
   description = "RDS Instance ID"
 }
 
-variable "name" {
+variable "alarm_name" {
   type        = string
-  default     = ""
   description = "Alarm Name Prefix"
 }
 variable "CPU_threshold" {
