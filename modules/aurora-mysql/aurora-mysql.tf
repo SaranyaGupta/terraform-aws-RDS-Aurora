@@ -131,7 +131,7 @@ data "aws_iam_policy_document" "monitoring_rds_assume_role" {
 
     principals {
       type        = "Service"
-      identifiers = ["monitoring.rds.${data.aws_partition.current.dns_suffix}"]
+      identifiers = ["monitoring.rds.amazonaws.com"]
     }
   }
 }
@@ -149,8 +149,11 @@ resource "aws_iam_role" "rds_enhanced_monitoring" {
   permissions_boundary  = var.iam_role_permissions_boundary
   force_detach_policies = var.iam_role_force_detach_policies
   max_session_duration  = var.iam_role_max_session_duration
-
-  tags = var.tags
+  tags = merge(
+    {
+      "Name" = format("%s", var.iam_role_name)
+    },
+	var.tags)
 }
 
 resource "aws_iam_role_policy_attachment" "rds_enhanced_monitoring" {
