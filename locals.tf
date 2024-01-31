@@ -8,5 +8,5 @@ locals {
   create_high_cpu_alarm            = var.create_high_cpu_alarm
   create_storage_space_too_low_alarm= var.create_storage_space_too_low_alarm
   create_memory_too_low_alarm       = var.create_memory_too_low_alarm
-  create_monitoring_role        = local.create && var.create_monitoring_role && var.monitoring_interval > 0
+  create_monitoring_role        = local.create && var.create_monitoring_role
 }
