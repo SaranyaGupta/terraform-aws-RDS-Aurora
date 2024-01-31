@@ -7,5 +7,4 @@ locals {
   db_parameter_group_name       = var.db_parameter_group_name
   backtrack_window              = (var.engine == "aurora-mysql" || var.engine == "aurora")? var.backtrack_window : 0
   create_monitoring_role        = local.create && var.create_monitoring_role
-
 }
